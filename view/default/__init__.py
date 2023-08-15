@@ -1,9 +1,9 @@
 from .NumberEdit import NumberEdit
 
-import builtins
+import nf_builtins
 
 class_viewer = {
-    builtins.nfnumber : NumberEdit,
+    nf_builtins.nfnumber : NumberEdit,
 }
 
 def widget_for(path, subwidget_style):

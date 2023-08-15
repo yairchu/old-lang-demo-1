@@ -13,7 +13,7 @@ class TextEdit(Widget):
     def handle_anykey(self, key_event):
         if super(TextEdit, self).handle_anykey(key_event):
             return True
-        self.set_text(self.get_text() + key_event.str)
+        self.set_text(self.get_text() + key_event.unicode)
         return True
     def _draw(self, surface, dest_size):
         text = self.get_text()

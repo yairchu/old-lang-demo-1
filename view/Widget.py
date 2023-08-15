@@ -225,9 +225,12 @@ class Widget(object):
     def draw(self, surface, xxx_todo_changeme):
         (w, h) = xxx_todo_changeme
         fw = self.draw_frame(surface)
-        subsurf = surface.subsurface(
-            surface.get_rect().inflate(-fw*2, -fw*2))
-        subdraws = self._draw(subsurf, (w-fw*2, h-fw*2))
+        try:
+            subsurf = surface.subsurface(
+                surface.get_rect().inflate(-fw*2, -fw*2))
+            subdraws = self._draw(subsurf, (w-fw*2, h-fw*2))
+        except Exception:
+            return
         if subdraws is None:
             return
         from lib.iterfeeder import iterfeeder

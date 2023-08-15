@@ -1,7 +1,7 @@
 from view import mainloop
 from model.field import ConstField, Field
 from model import class_fields, metaclass
-from builtins import add, multiply, nfnumber
+from nf_builtins import add, multiply, nfnumber
 from model.pyapi import nf_setattr
 import pickle
 import sys
@@ -30,14 +30,14 @@ def make_world():
     return path
 
 def main():
-    import builtins
+    import nf_builtins
     if sys.argv[1:] == ['-l']:
-        state = pickle.load(file('state.pkl', 'rb'))
+        state = pickle.load(open('state.pkl', 'rb'))
         world, cf, bt = state
         for key, value in cf.items():
             setattr(class_fields, key, value)
         for key, value in bt.items():
-            setattr(builtins, key, value)
+            setattr(nf_builtins, key, value)
     else:
         world = make_world()
     mainloop.mainloop(world)
@@ -47,8 +47,8 @@ def main():
                     for key, val in thing.__dict__.items()
                     if not key.startswith('_')
                     and not isinstance(val, ModuleType))
-    state = world, for_pickle(class_fields), for_pickle(builtins)
-    pickle.dump(state, file('state.pkl', 'wb'))
+    state = world, for_pickle(class_fields), for_pickle(nf_builtins)
+    pickle.dump(state, open('state.pkl', 'wb'))
 
 try:
     main()

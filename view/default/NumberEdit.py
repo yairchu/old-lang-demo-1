@@ -27,7 +27,7 @@ class NumberEdit(InstanceEdit):
     def handle_anykey(self, key_event):
         if super(NumberEdit, self).handle_anykey(key_event):
             return True
-        key_name = key_event.str
+        key_name = key_event.unicode
         if not '0' <= key_name <= '9':
             return False
         key_val = int(key_name)
