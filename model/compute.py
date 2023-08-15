@@ -1,5 +1,5 @@
-from field import PublicField
-import class_fields
+from .field import PublicField
+from . import class_fields
 
 def compute(path):
     path = cut_path_from_last_const(path)

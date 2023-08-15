@@ -32,7 +32,8 @@ class BaseClassEdit(view.BaseClassEdit.BaseClassEdit, Widget):
                 self.cursors['keyboard'].set(self.rows[row_index][0])
                 return
         self.event_move_cursor(direction)
-    def calc_rows(self, (width, height)):
+    def calc_rows(self, xxx_todo_changeme):
+        (width, height) = xxx_todo_changeme
         ratio = width * 1. / height
         if ratio < 1:
             ratio = 1
@@ -61,7 +62,7 @@ class BaseClassEdit(view.BaseClassEdit.BaseClassEdit, Widget):
             if 0 == num_cur_row:
                 continue
             for i in range(num_cur_row):
-                row.append(subs_iter.next())
+                row.append(next(subs_iter))
     def calc_positions(self, size):
         self.calc_rows(size)
         width, height = size
@@ -79,7 +80,8 @@ class BaseClassEdit(view.BaseClassEdit.BaseClassEdit, Widget):
                 x += xsize
             y += ysize
         self.calc_radii(size)
-    def calc_radii(self, (width, height)):
+    def calc_radii(self, xxx_todo_changeme1):
+        (width, height) = xxx_todo_changeme1
         for sub in self.subwidgets:
             from lib.math import distance
             pos = self.positions[sub]

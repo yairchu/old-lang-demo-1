@@ -1,4 +1,4 @@
-from WidgetList import WidgetList
+from .WidgetList import WidgetList
 import model
 from model.pyapi import nf_getattr
 from model import class_fields
@@ -11,7 +11,7 @@ class LocationBar(WidgetList):
     def __init__(self, key, path, subwidget_style, suffix=('key',)):
         super(LocationBar, self).__init__(key, subwidget_style)
         self.path = path
-        from textedit import FieldLabelEdit
+        from .textedit import FieldLabelEdit
         for i, p in enumerate(path):
             if not isinstance(p, model.Field):
                 continue
@@ -30,7 +30,7 @@ class Browser(WidgetList):
         self.subwidgets_sizes['key'] = 50
         self.clipboard = None
     def _set_sub(self, path):
-        for key in self.subwidgets.keys():
+        for key in list(self.subwidgets.keys()):
             self.remove_subwidget(key)
         self.object_widget = self.subwidget_style(path)
         valpath = []

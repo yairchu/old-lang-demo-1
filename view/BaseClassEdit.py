@@ -1,6 +1,6 @@
-from Widget import Widget
-from WidgetList import WidgetList
-from textedit import FieldLabelEdit
+from .Widget import Widget
+from .WidgetList import WidgetList
+from .textedit import FieldLabelEdit
 from model import Field, class_fields, compute
 from model.pyapi import nf_getattr
 
@@ -52,7 +52,7 @@ class BaseClassEdit(object):
                 continue
             widget = self.create_subwidget(field)
             self.add_subwidget(field, widget)
-        for field in self.subwidgets.keys():
+        for field in list(self.subwidgets.keys()):
             if field in fields or not isinstance(field, Field):
                 continue
             self.remove_subwidget(field)

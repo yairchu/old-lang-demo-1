@@ -4,13 +4,13 @@ import pygame
 # pygame.key.name does not generate pythonic names.
 # For example: K_MINUS <=> "-"
 key_names = dict((val, name[2:])
-                for (name, val) in vars(pygame.constants).iteritems()
+                for (name, val) in vars(pygame.constants).items()
                 if name.startswith('K_'))
 
 def draw_centered_text(surface, text, color):
     width, height = surface.get_size()
     x, y = width/2, height/2
-    lines = [line.strip() for line in filter(None, text.splitlines())]
+    lines = [line.strip() for line in [_f for _f in text.splitlines() if _f]]
     from lib.font import find_font
     does_fit, font = find_font(lines, (width, height))
     if not does_fit:

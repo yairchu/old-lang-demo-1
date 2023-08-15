@@ -96,7 +96,7 @@ class Widget(object):
         self.event_move_out = events.Event()
         self.cursors = {'keyboard' : Cursor('keyboard', self),
                         'mouse' : Cursor('mouse', self)}
-        for name, cursor in self.cursors.iteritems():
+        for name, cursor in self.cursors.items():
             for event_name in ['activated', 'deactivated']:
                 event = getattr(cursor, 'event_%s' % (event_name,))
                 handler = getattr(self, 'cursor_%s' % (event_name,))
@@ -113,7 +113,7 @@ class Widget(object):
     def cursor_activated(self, name):
         self.add_state('active_cursor_%s' % (name,))
         if self.should_move_to_inner():
-            key, = self.subwidgets.keys()
+            key, = list(self.subwidgets.keys())
             self.cursors[name].set(key)
     def states(self):
         states = list(self._states)
@@ -162,7 +162,7 @@ class Widget(object):
             return True
         return False
     def childrenpos_of_pos(self, pos):
-        for key, rect in self.anim_rects.iteritems():
+        for key, rect in self.anim_rects.items():
             if (rect is not None and rect.collidepoint(pos)):
                 rel_pos = tuple(p-tl for p,tl in zip(pos, rect.topleft))
                 yield key, rel_pos
@@ -222,7 +222,8 @@ class Widget(object):
         if self.fixed_frame_size is not None:
             return self.fixed_frame_size
         return fw
-    def draw(self, surface, (w, h)):
+    def draw(self, surface, xxx_todo_changeme):
+        (w, h) = xxx_todo_changeme
         fw = self.draw_frame(surface)
         subsurf = surface.subsurface(
             surface.get_rect().inflate(-fw*2, -fw*2))
@@ -249,4 +250,4 @@ class Widget(object):
         if not self.subwidgets:
             return
         cursor = self.cursors['keyboard']
-        cursor.set(self.subwidgets.iterkeys().next())
+        cursor.set(next(iter(self.subwidgets.keys())))

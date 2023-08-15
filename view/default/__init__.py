@@ -1,4 +1,4 @@
-from NumberEdit import NumberEdit
+from .NumberEdit import NumberEdit
 
 import builtins
 

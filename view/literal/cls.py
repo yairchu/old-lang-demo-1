@@ -39,7 +39,7 @@ class ClassEdit(BaseClassEdit):
         cls = self.path[-1].cls
         num_dsts = 0
         links = nf_getattr(cls, class_fields.links)
-        for dst, src in links.iteritems():
+        for dst, src in links.items():
             if src[:1] == (field, ):
                 num_dsts += 1
         return 1 != num_dsts

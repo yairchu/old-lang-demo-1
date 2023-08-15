@@ -1,4 +1,4 @@
-import cls
+from . import cls
 from model import compute, class_fields
 from model.pyapi import nf_getattr, nf_hasattr
 

@@ -1,4 +1,4 @@
-from BaseClassEdit import BaseClassEdit
+from .BaseClassEdit import BaseClassEdit
 from model.pyapi import nf_getattr
 from model import class_fields
 import pygame
@@ -7,8 +7,8 @@ class ClassEdit(BaseClassEdit):
     def drawmore(self, surface):
         cls = self.path[-1].cls
         links = nf_getattr(cls, class_fields.links)
-        for dst, src in links.iteritems():
-            dst_rect, src_rect = map(self.node_rect, [dst, src])
+        for dst, src in links.items():
+            dst_rect, src_rect = list(map(self.node_rect, [dst, src]))
             if None in [dst_rect, src_rect]:
                 continue
             dst_pos = dst_rect.center
@@ -24,7 +24,7 @@ class ClassEdit(BaseClassEdit):
         links = nf_getattr(cls, class_fields.links)
         for field in fields:
             result[field] = set()
-        for dst, src in links.iteritems():
+        for dst, src in links.items():
             result[self.graph_node(dst)].add(self.graph_node(src))
         return result
     def calc_rows(self, size):

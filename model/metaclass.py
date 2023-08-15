@@ -1,6 +1,6 @@
-from field import ConstField
-from pyapi import nf_setattr
-import class_fields
+from .field import ConstField
+from .pyapi import nf_setattr
+from . import class_fields
 
 base_metaclass_field = ConstField({'label': 'base metaclass'}, None)
 base_metaclass = (base_metaclass_field, )

@@ -1,4 +1,4 @@
-from Widget import Widget
+from .Widget import Widget
 
 class WidgetList(Widget):
     class Horizontal(object):
@@ -38,7 +38,7 @@ class WidgetList(Widget):
         cursor.set(self.subwidgets_order[new_index])
     def _draw(self, surface, dest_size):
         fixed_count = len(self.subwidgets_sizes)
-        fixed_sizes_sum = sum(self.subwidgets_sizes.itervalues())
+        fixed_sizes_sum = sum(self.subwidgets_sizes.values())
         axis = self.dimension.index
         subsize = list(dest_size)
         total_count = len(self.subwidgets)

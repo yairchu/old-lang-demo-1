@@ -1,5 +1,5 @@
-from compute import compute, cut_path_from_last_const
-import class_fields
+from .compute import compute, cut_path_from_last_const
+from . import class_fields
 
 def nf_getattr(obj, *subpath):
     return compute(obj + subpath)

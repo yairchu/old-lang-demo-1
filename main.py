@@ -34,9 +34,9 @@ def main():
     if sys.argv[1:] == ['-l']:
         state = pickle.load(file('state.pkl', 'rb'))
         world, cf, bt = state
-        for key, value in cf.iteritems():
+        for key, value in cf.items():
             setattr(class_fields, key, value)
-        for key, value in bt.iteritems():
+        for key, value in bt.items():
             setattr(builtins, key, value)
     else:
         world = make_world()
@@ -44,7 +44,7 @@ def main():
     def for_pickle(thing):
         from types import ModuleType
         return dict((key, val)
-                    for key, val in thing.__dict__.iteritems()
+                    for key, val in thing.__dict__.items()
                     if not key.startswith('_')
                     and not isinstance(val, ModuleType))
     state = world, for_pickle(class_fields), for_pickle(builtins)
@@ -58,10 +58,10 @@ except:
     import sys
     sys.last_type, sys.last_value, sys.last_traceback = sys.exc_info()
     import traceback
-    print '-------- Exception:'
-    print
+    print('-------- Exception:')
+    print()
     for line in traceback.format_exception_only(sys.last_type, sys.last_value):
-        print line
+        print(line)
     import pdb
     pdb.pm()
     

@@ -17,7 +17,8 @@ def animate(factor, src, dst):
 def rect2sides(rect):
     x, y, w, h = rect
     return x, y, x+w, y+h
-def sides2rect((left, top, right, bottom)):
+def sides2rect(xxx_todo_changeme):
+    (left, top, right, bottom) = xxx_todo_changeme
     return pygame.Rect(left, top, right-left, bottom-top)
 
 class Animator(object):
@@ -35,7 +36,7 @@ class Animator(object):
         self.anim_finished = True
         self.toshow = set()
         self._draw(surface, rect, widget)
-        for x in self.prev_rects.keys():
+        for x in list(self.prev_rects.keys()):
             if x not in self.toshow:
                 del self.prev_rects[x]
         self.show.intersection_update(self.toshow)
@@ -58,10 +59,10 @@ class Animator(object):
         rate = 0.2
         limit = 50
         from functools import partial
-        anim = map(partial(animate, rate), prev, sides)
+        anim = list(map(partial(animate, rate), prev, sides))
         animrect = sides2rect(anim)
         from operator import sub
-        if max(map(abs, map(sub, anim, sides))) > limit:
+        if max(list(map(abs, list(map(sub, anim, sides))))) > limit:
             self.anim_finished = False
         self.prev_rects[path] = animrect
         return animrect

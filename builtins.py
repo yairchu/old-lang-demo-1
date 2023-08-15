@@ -1,4 +1,4 @@
-from __future__ import division
+
 from model.magic import magic_class
 from model.field import PublicField, ConstField
 from model.compute import class_fields
@@ -14,7 +14,7 @@ nfnumber = magic_class(_nfnumber)
 def make_sig(**kwargs):
     trans = dict(_eq='=')
     res = []
-    for key, value in kwargs.iteritems():
+    for key, value in kwargs.items():
         label = trans.get(key, key)
         field = PublicField({'label': label}, value)
         res.append(field)

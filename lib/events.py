@@ -11,7 +11,7 @@ class Event(object):
     def unregister(self, key):
         del self.callbacks[key]
     def __call__(self, *args, **kw):
-        for callback in self.callbacks.itervalues():
+        for callback in self.callbacks.values():
             callback(*args, **kw)
 
 HANDLER_PREFIX = 'handle'

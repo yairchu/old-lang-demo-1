@@ -10,9 +10,9 @@ def iter_events():
 def _mainloop(path):
     resolution = (800, 600)
     screen = pygame.display.set_mode(resolution)
-    import styles
-    from Browser import Browser
-    from Animator import Animator
+    from . import styles
+    from .Browser import Browser
+    from .Animator import Animator
     anim = Animator()
     browser = Browser(styles.literal)
     browser.enter(path)

@@ -1,4 +1,4 @@
-from field import PublicField
+from .field import PublicField
 
 fields = PublicField({'label': 'fields'}, None)
 links = PublicField({'label': 'links'}, None)

@@ -1,8 +1,8 @@
-from compute import compute, base_compute
-from field import ConstField, PublicField
-from pyapi import nf_setattr
-from metaclass import base_metaclass
-import class_fields
+from .compute import compute, base_compute
+from .field import ConstField, PublicField
+from .pyapi import nf_setattr
+from .metaclass import base_metaclass
+from . import class_fields
 
 magic_metaclass_field = ConstField(
     {'label': 'metaclass of magic'}, base_metaclass)
