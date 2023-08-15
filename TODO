@@ -1,0 +1,18 @@
+* Keep TODO up to date
+
+Model:
+
+* Fields being objects too, TRICKY..
+* Persistency
+* Metaclasses
+* Versions
+
+GUI:
+
+* Formats
+* Display Key Tooltips - they should have formats too..
+* Texts are objects as well - every letter is an object, word-proc..
+
+Productioness:
+
+* Reimplement Factorial
