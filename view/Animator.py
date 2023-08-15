@@ -77,8 +77,11 @@ class Animator(object):
         anim_rect = self.calc_anim_rect(path, rect)
         ax, ay, aw, ah = anim_rect
         clamped = anim_rect.clamp(surface.get_rect())
-        subsurf = surface.subsurface(clamped)
-        subdraws = widget.draw(subsurf, rect.size)
+        try:
+            subsurf = surface.subsurface(clamped)
+            subdraws = widget.draw(subsurf, rect.size)
+        except Exception:
+            return
         if subdraws is None:
             # not a generator
             return
